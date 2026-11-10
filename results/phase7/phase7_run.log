@@ -1,0 +1,388 @@
+6.5s 1 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+6.5s 2 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+6.5s 3 0.00s - to python to disable frozen modules.
+6.5s 4 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+7.1s 5 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+7.1s 6 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+7.1s 7 0.00s - to python to disable frozen modules.
+7.1s 8 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+9.1s 9 Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+9.1s 10 
+9.1s 11 Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+10.8s 12 Hugging Face login successful.
+14.5s 13 GPUs: ['Tesla T4', 'Tesla T4']
+14.5s 14 Writing pcr_metrics.py
+14.6s 15 Writing pcr_prep.py
+14.6s 16 Writing pcr_lib.py
+14.6s 17 Writing pcr_peft.py
+14.6s 18 Writing pcr_run.py
+14.6s 19 Writing pcr_ens.py
+14.6s 20 Writing evaluate_phase7.py
+14.7s 21 === data preparation + BM25 (CPU) ===
+187.0s 22 Phase-7 files: ['Phase_7_PCR/Dev/dev.json', 'Phase_7_PCR/Dev/dev_candidates.json', 'Phase_7_PCR/Test/test.json', 'Phase_7_PCR/Test/test_candidates.json', 'Phase_7_PCR/Train/train.json', 'Phase_7_PCR/Train/train_candidates.json']
+187.0s 23 
+187.0s 24 train: 827 queries | raw dict, example keys ['text', 'relevant_candidates'] | pool 4320 docs, raw dict, example ['text']
+187.0s 25 query '0000000599': 'PETITIONER: <NAME> Vs. RESPONDENT: ROOP SINGH RATHORE & OTHERS(and connected appeal) DATE OF JUDGMENT: 07/05/1963 BENCH: <NAME>, S.K. BENCH: <NAME>, S.K. SINHA, BHUVNESHWAR P.(CJ) DAYAL, RAGHUBAR AYYANGAR, <NAME> MUDHOLKAR, J.R. CITATION: 1964 AIR 1545 1964 SCR (3) 573 CITATOR INFO : R 1970 SC 765 ('
+187.0s 26 candidate '0000000262': 'JUDGMENT <NAME>, C.J. 1. The only point which has to be considered in this appeal is whether or not the lower appellate Court was wrong in admitting in evidence statements contained in two Exhibits, being Ex. 58 and 59 in the suit. 2. The case of the plaintiffs in the suit was that they were the own'
+187.0s 27 
+187.0s 28 dev: 118 queries | raw dict, example keys ['text', 'relevant_candidates'] | pool 1023 docs, raw dict, example ['text']
+187.0s 29 query '0000012637': 'PETITIONER: <ORG>, <NAME> Vs. RESPONDENT: COMMISSIONER OF INCOME-TAX, <NAME> DATE OF JUDGMENT: 08/12/1965 BENCH: <NAME>, S.M. BENCH: <NAME>, S.M. SUBBARAO, K. SHAH, J.C. CITATION: 1966 AIR 1053 1966 SCR (2) 944 CITATOR INFO : F 1967 SC 819 (5) R 1969 SC 840 (11) R 1969 SC 946 (5) E 1969 SC1160 (5) D'
+187.0s 30 candidate '0000003060': '<NAME>, J. 1. This is an appeal from the decision of <ORG> at Fort William in Bengal, dated November 25, 1924, by which the judgment of the Subordinate Judge of Asansol in Zillah Burdwan, dated February 5, 1923, was reversed and the suit dismissed with costs. The appellant prays that the decision of'
+187.0s 31 
+187.0s 32 test: 237 queries | raw dict, example keys ['text'] | pool 1727 docs, raw dict, example ['text']
+187.0s 33 query '0000021652': 'PETITIONER: <NAME> Vs. RESPONDENT: <NAME> & ORS. DATE OF JUDGMENT26/09/1989 BENCH: <NAME>, <NAME> (J) BENCH: <NAME>, <NAME> (J) RAY, <NAME> (J) CITATION: 1990 AIR 209 1989 SCR Supl. (1) 292 1990 SCC (1) 445 JT 1989 (4) 38 1989 SCALE (2)677 ACT: Criminal Trial--Criminal charge must be brought home- P'
+187.0s 34 candidate '0000000987': 'JUDGMENT <NAME>, J. 1. This appeal with special leave is directed against the order of <ORG>, Madras "A" Bench, dated August 8, 1952, made in I. T. A. No. 3254 of 1951-52 allowing the appeal and reversing the order of the Appellate Assistant Commissioner in I. T. A. No. 130 of 1949-50 for the assess'
+187.0s 35 
+187.0s 36 === data analysis ===
+187.0s 37 train: 827 queries, pool 4320 | query words median 4508 p90 12602 | candidate words median 3632 p90 12422 max 410597 | empty texts q 0 c 0 | query id inside its own pool 827 | candidate text identical to the query 2
+187.0s 38 gold per query: mean 6.42 median 4 max 52 | queries with no gold 10 | with > 7 gold 248 (30%) | gold ids missing from the pool 0 of 5308 | oracle F1@7 0.6386
+187.0s 39 gold size histogram [0, 121, 134, 100, 78, 51, 44, 41, 32, 27, 25, 29, 21, 16, 22, 76] (last bin = 15+) | gold pairs pointing at the query itself 0
+187.0s 40 dev: 118 queries, pool 1023 | query words median 4620 p90 15333 | candidate words median 4036 p90 16599 max 410597 | empty texts q 0 c 0 | query id inside its own pool 118 | candidate text identical to the query 0
+187.0s 41 gold per query: mean 8.25 median 5 max 92 | queries with no gold 0 | with > 7 gold 39 (33%) | gold ids missing from the pool 0 of 973 | oracle F1@7 0.6181
+187.0s 42 gold size histogram [0, 15, 18, 7, 9, 14, 7, 9, 4, 5, 2, 6, 4, 2, 0, 16] (last bin = 15+) | gold pairs pointing at the query itself 0
+187.0s 43 test: 237 queries, pool 1727 | query words median 4653 p90 14065 | candidate words median 3947 p90 13491 max 410597 | empty texts q 0 c 0 | query id inside its own pool 237 | candidate text identical to the query 0
+187.0s 44 pool overlaps (shared candidate ids): train-dev 436 | train-test 740 | dev-test 220 | test queries also train/dev queries 0
+187.0s 45 dev: pool candidates cited by >= 1 training query: 396 of 1023 | share of dev gold pairs whose candidate is cited in train: 0.37 (pool share 0.39)
+187.0s 46 test: pool candidates cited by >= 1 training query: 624 of 1727
+187.0s 47 train [max_year]: query year median 1985 (unknown 2) | candidate year median 1980 (unknown 85) | pairs flagged 'candidate newer than query': 0.443 | among GOLD pairs: 0.188
+187.0s 48 dev [max_year]: query year median 1986 (unknown 0) | candidate year median 1987 (unknown 8) | pairs flagged 'candidate newer than query': 0.471 | among GOLD pairs: 0.205
+187.0s 49 test [max_year]: query year median 1988 (unknown 3) | candidate year median 1985 (unknown 34) | pairs flagged 'candidate newer than query': 0.430
+187.0s 50 train [dated]: query year median 1975 (unknown 57) | candidate year median 1970 (unknown 494) | pairs flagged 'candidate newer than query': 0.375 | among GOLD pairs: 0.088
+187.0s 51 dev [dated]: query year median 1978 (unknown 4) | candidate year median 1972 (unknown 76) | pairs flagged 'candidate newer than query': 0.406 | among GOLD pairs: 0.083
+187.0s 52 test [dated]: query year median 1978 (unknown 22) | candidate year median 1973 (unknown 191) | pairs flagged 'candidate newer than query': 0.371
+187.0s 53 year estimate used: dated (gold-flag rate / all-flag rate on dev: max_year 0.434, dated 0.205)
+187.0s 54 
+187.0s 55 === BM25 tuning on dev ===
+187.0s 56 ngram (1, 1) k1 0.9 b 0.4 q log (vocab 26270): f1@7 0.0712 | p@7 0.0775 | r@7 0.0658 | map 0.1013 | mrr 0.2409 | R@7 0.0953 | R@20 0.1984 | R@50 0.3200 | R@100 0.4759
+187.0s 57 ngram (1, 1) k1 0.9 b 0.4 q bin (vocab 26270): f1@7 0.0456 | p@7 0.0496 | r@7 0.0421 | map 0.0641 | mrr 0.1507 | R@7 0.0669 | R@20 0.1214 | R@50 0.2122 | R@100 0.3798
+187.0s 58 ngram (1, 1) k1 1.2 b 0.75 q log (vocab 26270): f1@7 0.1757 | p@7 0.1913 | r@7 0.1624 | map 0.2172 | mrr 0.5178 | R@7 0.2482 | R@20 0.3406 | R@50 0.4746 | R@100 0.6128
+187.0s 59 ngram (1, 1) k1 1.2 b 0.75 q bin (vocab 26270): f1@7 0.1223 | p@7 0.1332 | r@7 0.1131 | map 0.1516 | mrr 0.3776 | R@7 0.1750 | R@20 0.2530 | R@50 0.3504 | R@100 0.4687
+187.0s 60 ngram (1, 1) k1 1.5 b 0.9 q log (vocab 26270): f1@7 0.2246 | p@7 0.2446 | r@7 0.2076 | map 0.2820 | mrr 0.6194 | R@7 0.3337 | R@20 0.4577 | R@50 0.5782 | R@100 0.6647
+187.0s 61 ngram (1, 1) k1 1.5 b 0.9 q bin (vocab 26270): f1@7 0.1757 | p@7 0.1913 | r@7 0.1624 | map 0.2177 | mrr 0.5348 | R@7 0.2586 | R@20 0.3331 | R@50 0.4326 | R@100 0.5496
+187.0s 62 ngram (1, 1) k1 2.0 b 0.75 q log (vocab 26270): f1@7 0.2123 | p@7 0.2312 | r@7 0.1963 | map 0.2621 | mrr 0.6047 | R@7 0.3029 | R@20 0.4200 | R@50 0.5490 | R@100 0.6499
+187.0s 63 ngram (1, 1) k1 2.0 b 0.75 q bin (vocab 26270): f1@7 0.1545 | p@7 0.1683 | r@7 0.1429 | map 0.1963 | mrr 0.4898 | R@7 0.2260 | R@20 0.3210 | R@50 0.3962 | R@100 0.5235
+187.0s 64 (6s)
+187.0s 65 ngram (1, 2) k1 0.9 b 0.4 q log (vocab 417558): f1@7 0.2368 | p@7 0.2579 | r@7 0.2189 | map 0.2871 | mrr 0.6215 | R@7 0.3407 | R@20 0.4363 | R@50 0.5450 | R@100 0.6660
+187.0s 66 ngram (1, 2) k1 0.9 b 0.4 q bin (vocab 417558): f1@7 0.2123 | p@7 0.2312 | r@7 0.1963 | map 0.2643 | mrr 0.6138 | R@7 0.2985 | R@20 0.4019 | R@50 0.5001 | R@100 0.6181
+187.0s 67 ngram (1, 2) k1 1.2 b 0.75 q log (vocab 417558): f1@7 0.3213 | p@7 0.3499 | r@7 0.2970 | map 0.4232 | mrr 0.7383 | R@7 0.4544 | R@20 0.5603 | R@50 0.6563 | R@100 0.7539
+187.0s 68 ngram (1, 2) k1 1.2 b 0.75 q bin (vocab 417558): f1@7 0.3168 | p@7 0.3450 | r@7 0.2929 | map 0.4129 | mrr 0.7473 | R@7 0.4456 | R@20 0.5317 | R@50 0.6169 | R@100 0.7096
+187.0s 69 ngram (1, 2) k1 1.5 b 0.9 q log (vocab 417558): f1@7 0.3602 | p@7 0.3923 | r@7 0.3330 | map 0.4826 | mrr 0.7858 | R@7 0.4921 | R@20 0.6355 | R@50 0.7245 | R@100 0.7829
+187.0s 70 ngram (1, 2) k1 1.5 b 0.9 q bin (vocab 417558): f1@7 0.3591 | p@7 0.3910 | r@7 0.3320 | map 0.4739 | mrr 0.7834 | R@7 0.4878 | R@20 0.5962 | R@50 0.6894 | R@100 0.7636
+187.0s 71 ngram (1, 2) k1 2.0 b 0.75 q log (vocab 417558): f1@7 0.3457 | p@7 0.3765 | r@7 0.3196 | map 0.4540 | mrr 0.7637 | R@7 0.4709 | R@20 0.6012 | R@50 0.7043 | R@100 0.7704
+187.0s 72 ngram (1, 2) k1 2.0 b 0.75 q bin (vocab 417558): f1@7 0.3480 | p@7 0.3789 | r@7 0.3217 | map 0.4444 | mrr 0.7656 | R@7 0.4719 | R@20 0.5732 | R@50 0.6566 | R@100 0.7491
+187.0s 73 (15s)
+187.0s 74 chosen BM25 config (best dev MAP): {'ngram': [1, 2], 'k1': 1.5, 'b': 0.9, 'qmode': 'log'} | f1@7 0.3602 | p@7 0.3923 | r@7 0.3330 | map 0.4826 | mrr 0.7858 | R@7 0.4921 | R@20 0.6355 | R@50 0.7245 | R@100 0.7829
+187.0s 75 train: BM25 (827, 4320) in 44s | f1@7 0.2862 | p@7 0.2743 | r@7 0.2992 | map 0.3402 | mrr 0.5969 | R@7 0.3881 | R@20 0.5524 | R@50 0.6616 | R@100 0.7238
+187.0s 76 dev: BM25 (118, 1023) in 13s | f1@7 0.3602 | p@7 0.3923 | r@7 0.3330 | map 0.4826 | mrr 0.7858 | R@7 0.4921 | R@20 0.6355 | R@50 0.7245 | R@100 0.7829
+187.0s 77 test: BM25 (237, 1727) in 18s
+187.0s 78 train lists: 60 BM25 candidates + gold | train queries with >= 1 gold in pool 817 of 827 | BM25 recall@50 on train 0.662, @100 0.724
+187.0s 79 
+187.0s 80 lexical baseline: BM25 alone dev F1@7 0.3606 | BM25 + year penalty + popularity: tuned 0.4002, honest (fitted on half of dev, scored on the other half) 0.3989 | weights (w_dense, year_pen, pop) (0.0, 2.0, 0.0)
+187.0s 81 
+187.0s 82 PREP_DONE in 2.8 min
+187.0s 83 
+187.0s 84 GPUs: 2 | queues: {0: [('lorma', 'encdec', '', {}), ('full', 'gqa', '', {}), ('ia3', 'mla', '', {})], 1: [('qlora', 'retnet', '', {}), ('prompt', 'gqa', '', {}), ('partial', 'mla', '', {})]} | final: {0: [('kd', 'gqa', '', {})], 1: [('lorma', 'encdec', '_randneg', {'NEG_MODE': 'random'})]} | smoke: False
+187.0s 85 [   2.9 min] GPU0 started lorma_encdec
+187.0s 86 [   2.9 min] GPU1 started qlora_retnet
+187.0s 87 [   2.9 min]   GPU0 lorma_encdec: []
+187.0s 88 [   2.9 min]   GPU1 qlora_retnet: []
+487.0s 89 [   7.9 min]   GPU0 lorma_encdec: ['  run["loss"] += float(loss); run["kd"] += float(kdl); run["n"] += 1']
+487.0s 90 [   7.9 min]   GPU1 qlora_retnet: ['model 28.1M params | trainable 3.553M']
+787.0s 91 [  12.9 min]   GPU0 lorma_encdec: ['  ep 2 step 180/1096 loss 2.0958 | tau 0.0494 | lr x0.96 | 5.0 min']
+787.0s 92 [  12.9 min]   GPU1 qlora_retnet: ['  ep 1 step 20/1096 loss 1.9829 | tau 0.0500 | lr x0.56 | 2.1 min']
+1087.1s 93 [  17.9 min]   GPU0 lorma_encdec: ['  ep 3 step 360/1096 loss 2.0561 | tau 0.0494 | lr x0.79 | 10.1 min']
+1087.1s 94 [  17.9 min]   GPU1 qlora_retnet: ['  ep 1 step 80/1096 loss 1.8663 | tau 0.0502 | lr x0.89 | 8.6 min']
+1387.1s 95 [  22.9 min]   GPU0 lorma_encdec: ['  ep 4 step 520/1096 loss 2.1785 | tau 0.0494 | lr x0.57 | 15.1 min']
+1387.1s 96 [  22.9 min]   GPU1 qlora_retnet: ['  ep 1 step 120/1096 loss 2.2222 | tau 0.0504 | lr x0.77 | 12.9 min']
+1687.1s 97 [  27.9 min]   GPU0 lorma_encdec: ['  ep 6 step 700/1096 loss 1.8410 | tau 0.0494 | lr x0.31 | 20.2 min']
+1687.1s 98 [  27.9 min]   GPU1 qlora_retnet: ['  ep 2 step 160/1096 loss 1.8421 | tau 0.0504 | lr x0.54 | 18.9 min']
+1987.1s 99 [  32.9 min]   GPU0 lorma_encdec: ['  ep 7 step 860/1096 loss 1.9739 | tau 0.0494 | lr x0.12 | 25.2 min']
+1987.1s 100 [  32.9 min]   GPU1 qlora_retnet: ['  ep 2 step 200/1096 loss 1.9543 | tau 0.0505 | lr x0.38 | 23.2 min']
+2287.1s 101 [  37.9 min]   GPU0 lorma_encdec: ['  ep 8 step 1040/1096 loss 1.9855 | tau 0.0494 | lr x0.03 | 30.2 min']
+2287.1s 102 [  37.9 min]   GPU1 qlora_retnet: ['  ep 2 step 240/1096 loss 1.6095 | tau 0.0504 | lr x0.23 | 27.4 min']
+2587.1s 103 [  42.9 min]   GPU0 lorma_encdec: ['test: 237 queries x 1727 candidates scored in 82s']
+2587.1s 104 [  42.9 min]   GPU1 qlora_retnet: ['  ep 3 step 280/1096 loss 1.9978 | tau 0.0505 | lr x0.06 | 33.4 min']
+2692.1s 105 [  44.6 min] GPU0 finished lorma_encdec rc=0
+2692.1s 106 KD signal written for 827 training queries (4309 candidates) in 122s
+2692.1s 107 
+2692.1s 108 SUMMARY pcr_lorma_encdec: dev dense F1@7 0.2157 MAP 0.2917 R@50 0.6559 | hybrid F1@7 0.4024 (honest 0.3949, BM25 alone 0.3606) | params 68.8M trainable 1.72M | train 33 min | peak 2.5 GB | test scoring 82s
+2692.1s 109 RUN_DONE pcr_lorma_encdec
+2692.1s 110 [  44.6 min] GPU0 started full_gqa
+2887.1s 111 [  47.9 min]   GPU0 full_gqa: ['  ep 1 step 40/1096 loss 1.8943 | tau 0.0501 | lr x0.99 | 2.1 min']
+2887.1s 112 [  47.9 min]   GPU1 qlora_retnet: ['  ep 3 step 320/1096 loss 1.9761 | tau 0.0505 | lr x0.03 | 37.8 min']
+3187.1s 113 [  52.9 min]   GPU0 full_gqa: ['== epoch 1 | step 120 | minutes 6.2834 | map 0.3087 | f1@7 0.2346 | R@7 0.3158 | R@50 0.6752 | best True']
+3187.1s 114 [  52.9 min]   GPU1 qlora_retnet: ['restored best checkpoint (dev MAP 0.3340)']
+3487.1s 115 [  57.9 min]   GPU0 full_gqa: ['  ep 2 step 200/1096 loss 1.9075 | tau 0.0504 | lr x0.82 | 11.3 min']
+3487.1s 116 [  57.9 min]   GPU1 qlora_retnet: ["DEV error analysis (hybrid): {'gold 1-3': {'n': 40, 'f1': 0.2898, 'zero_hit': 0.15}, 'gold 4-7': {'n': 39, 'f1': 0.4628, 'zero_hit': 0.0256}, 'gold 8+': {'n': 39, 'f1': 0.4174, 'zero_hit': 0.0}, 'short queries': {'n': 40, 'f1': 0.3555, 'zero_hit': 0.075}, 'medium queries': {'n': 39, 'f1': 0.4727, 'zero_hit': 0.0513}, 'long queries': {'n': 39, 'f1': 0.3884, 'zero_hit': 0.0513}}"]
+3787.1s 117 [  62.9 min]   GPU0 full_gqa: ['  ep 3 step 300/1096 loss 1.7204 | tau 0.0503 | lr x0.61 | 17.3 min']
+3787.1s 118 [  62.9 min]   GPU1 qlora_retnet: ['test: 237 queries x 1727 candidates scored in 334s']
+4087.1s 119 [  67.9 min]   GPU0 full_gqa: ['  ep 3 step 380/1096 loss 1.4778 | tau 0.0503 | lr x0.41 | 22.3 min']
+4087.1s 120 [  67.9 min]   GPU1 qlora_retnet: ['test: 237 queries x 1727 candidates scored in 334s']
+4102.1s 121 [  68.1 min] GPU1 finished qlora_retnet rc=0
+4102.1s 122 KD signal written for 827 training queries (4309 candidates) in 496s
+4102.1s 123 
+4102.1s 124 SUMMARY pcr_qlora_retnet: dev dense F1@7 0.2846 MAP 0.3808 R@50 0.7215 | hybrid F1@7 0.4047 (honest 0.3952, BM25 alone 0.3606) | params 28.1M trainable 3.55M | train 42 min | peak 4.2 GB | test scoring 334s
+4102.1s 125 RUN_DONE pcr_qlora_retnet
+4102.1s 126 [  68.1 min] GPU1 started prompt_gqa
+4387.1s 127 [  72.9 min]   GPU0 full_gqa: ['  ep 4 step 460/1096 loss 1.5437 | tau 0.0503 | lr x0.26 | 26.5 min']
+4387.1s 128 [  72.9 min]   GPU1 prompt_gqa: ['  ep 1 step 60/1096 loss 1.7073 | tau 0.0499 | lr x0.98 | 3.3 min']
+4687.1s 129 [  77.9 min]   GPU0 full_gqa: ['  ep 4 step 540/1096 loss 1.4313 | tau 0.0503 | lr x0.11 | 31.5 min']
+4687.1s 130 [  77.9 min]   GPU1 prompt_gqa: ['== epoch 1 | step 120 | minutes 6.7296 | map 0.3101 | f1@7 0.2268 | R@7 0.3189 | R@50 0.6893 | best True']
+4987.1s 131 [  82.9 min]   GPU0 full_gqa: ['  ep 5 step 620/1096 loss 1.5821 | tau 0.0503 | lr x0.03 | 36.5 min']
+4987.1s 132 [  82.9 min]   GPU1 prompt_gqa: ['  ep 2 step 220/1096 loss 1.6557 | tau 0.0502 | lr x0.75 | 13.3 min']
+5287.2s 133 [  87.9 min]   GPU0 full_gqa: ["DEV error analysis (hybrid): {'gold 1-3': {'n': 40, 'f1': 0.2955, 'zero_hit': 0.15}, 'gold 4-7': {'n': 39, 'f1': 0.4793, 'zero_hit': 0.0256}, 'gold 8+': {'n': 39, 'f1': 0.4154, 'zero_hit': 0.0}, 'short queries': {'n': 40, 'f1': 0.3602, 'zero_hit': 0.075}, 'medium queries': {'n': 39, 'f1': 0.5, 'zero_hit': 0.0513}, 'long queries': {'n': 39, 'f1': 0.3792, 'zero_hit': 0.0513}}"]
+5287.2s 134 [  87.9 min]   GPU1 prompt_gqa: ['  ep 3 step 280/1096 loss 2.0118 | tau 0.0505 | lr x0.59 | 17.6 min']
+5587.2s 135 [  92.9 min]   GPU0 full_gqa: ['test: 237 queries x 1727 candidates scored in 146s']
+5587.2s 136 [  92.9 min]   GPU1 prompt_gqa: ['== epoch 3 | step 360 | minutes 22.0334 | map 0.3384 | f1@7 0.2501 | R@7 0.3610 | R@50 0.7086 | best True']
+5662.2s 137 [  94.1 min] GPU0 finished full_gqa rc=0
+5662.2s 138 KD signal written for 827 training queries (4309 candidates) in 215s
+5662.2s 139 
+5662.2s 140 SUMMARY pcr_full_gqa: dev dense F1@7 0.3024 MAP 0.4102 R@50 0.7149 | hybrid F1@7 0.4091 (honest 0.4005, BM25 alone 0.3606) | params 125.5M trainable 125.46M | train 41 min | peak 4.8 GB | test scoring 146s
+5662.2s 141 RUN_DONE pcr_full_gqa
+5662.2s 142 [  94.1 min] GPU0 started ia3_mla
+5887.2s 143 [  97.9 min]   GPU0 ia3_mla: ['  ep 1 step 60/1096 loss 1.6988 | tau 0.0500 | lr x0.99 | 2.7 min']
+5887.2s 144 [  97.9 min]   GPU1 prompt_gqa: ['  ep 4 step 460/1096 loss 1.6599 | tau 0.0504 | lr x0.19 | 28.6 min']
+6187.2s 145 [ 102.9 min]   GPU0 ia3_mla: ['  ep 2 step 140/1096 loss 2.0476 | tau 0.0506 | lr x0.93 | 7.0 min']
+6187.2s 146 [ 102.9 min]   GPU1 prompt_gqa: ['  ep 4 step 520/1096 loss 1.7943 | tau 0.0504 | lr x0.07 | 32.9 min']
+6487.2s 147 [ 107.9 min]   GPU0 ia3_mla: ['== epoch 2 | step 240 | minutes 11.4893 | map 0.3378 | f1@7 0.2546 | R@7 0.3677 | R@50 0.6982 | best True']
+6487.2s 148 [ 107.9 min]   GPU1 prompt_gqa: ['== epoch 5 | step 600 | minutes 37.3702 | map 0.3448 | f1@7 0.2690 | R@7 0.3803 | R@50 0.6950']
+6787.2s 149 [ 112.9 min]   GPU0 ia3_mla: ['  ep 3 step 360/1096 loss 1.7548 | tau 0.0509 | lr x0.59 | 17.6 min']
+6787.2s 150 [ 112.9 min]   GPU1 prompt_gqa: ["DEV error analysis (hybrid): {'gold 1-3': {'n': 40, 'f1': 0.3011, 'zero_hit': 0.15}, 'gold 4-7': {'n': 39, 'f1': 0.4835, 'zero_hit': 0.0256}, 'gold 8+': {'n': 39, 'f1': 0.4071, 'zero_hit': 0.0}, 'short queries': {'n': 40, 'f1': 0.3602, 'zero_hit': 0.075}, 'medium queries': {'n': 39, 'f1': 0.5, 'zero_hit': 0.0513}, 'long queries': {'n': 39, 'f1': 0.3746, 'zero_hit': 0.0513}}"]
+7087.2s 151 [ 117.9 min]   GPU0 ia3_mla: ['  ep 4 step 440/1096 loss 1.8106 | tau 0.0509 | lr x0.42 | 22.0 min']
+7087.2s 152 [ 117.9 min]   GPU1 prompt_gqa: ['test: 237 queries x 1727 candidates scored in 185s']
+7207.2s 153 [ 119.9 min] GPU1 finished prompt_gqa rc=0
+7207.2s 154 KD signal written for 827 training queries (4309 candidates) in 272s
+7207.2s 155 
+7207.2s 156 SUMMARY pcr_prompt_gqa: dev dense F1@7 0.2957 MAP 0.4078 R@50 0.7405 | hybrid F1@7 0.4069 (honest 0.3990, BM25 alone 0.3606) | params 125.5M trainable 0.21M | train 41 min | peak 3.5 GB | test scoring 185s
+7207.2s 157 RUN_DONE pcr_prompt_gqa
+7207.2s 158 [ 119.9 min] GPU1 started partial_mla
+7387.2s 159 [ 122.9 min]   GPU0 ia3_mla: ['  ep 4 step 540/1096 loss 1.5446 | tau 0.0509 | lr x0.23 | 27.3 min']
+7387.2s 160 [ 122.9 min]   GPU1 partial_mla: ['  ep 1 step 60/1096 loss 1.6605 | tau 0.0500 | lr x0.99 | 1.9 min']
+7687.2s 161 [ 127.9 min]   GPU0 ia3_mla: ['  ep 5 step 640/1096 loss 1.7605 | tau 0.0509 | lr x0.08 | 32.5 min']
+7687.2s 162 [ 127.9 min]   GPU1 partial_mla: ['  ep 2 step 180/1096 loss 1.7961 | tau 0.0505 | lr x0.94 | 6.5 min']
+7987.2s 163 [ 132.9 min]   GPU0 ia3_mla: ['  ep 6 step 740/1096 loss 1.7593 | tau 0.0508 | lr x0.03 | 37.8 min']
+7987.2s 164 [ 132.9 min]   GPU1 partial_mla: ['  ep 3 step 320/1096 loss 2.0993 | tau 0.0506 | lr x0.80 | 11.8 min']
+8287.2s 165 [ 137.9 min]   GPU0 ia3_mla: ["DEV error analysis (hybrid): {'gold 1-3': {'n': 40, 'f1': 0.2955, 'zero_hit': 0.175}, 'gold 4-7': {'n': 39, 'f1': 0.4835, 'zero_hit': 0.0256}, 'gold 8+': {'n': 39, 'f1': 0.4237, 'zero_hit': 0.0}, 'short queries': {'n': 40, 'f1': 0.3649, 'zero_hit': 0.1}, 'medium queries': {'n': 39, 'f1': 0.5078, 'zero_hit': 0.0513}, 'long queries': {'n': 39, 'f1': 0.3838, 'zero_hit': 0.0513}}"]
+8287.2s 166 [ 137.9 min]   GPU1 partial_mla: ['  ep 4 step 440/1096 loss 1.8281 | tau 0.0506 | lr x0.64 | 16.5 min']
+8587.2s 167 [ 142.9 min]   GPU0 ia3_mla: ['test: 237 queries x 1727 candidates scored in 141s']
+8587.2s 168 [ 142.9 min]   GPU1 partial_mla: ['  ep 5 step 580/1096 loss 1.7489 | tau 0.0507 | lr x0.43 | 21.7 min']
+8602.2s 169 [ 143.1 min] GPU0 finished ia3_mla rc=0
+8602.2s 170 KD signal written for 827 training queries (4309 candidates) in 210s
+8602.2s 171 
+8602.2s 172 SUMMARY pcr_ia3_mla: dev dense F1@7 0.2846 MAP 0.4035 R@50 0.7322 | hybrid F1@7 0.4147 (honest 0.4061, BM25 alone 0.3606) | params 125.9M trainable 0.25M | train 41 min | peak 3.6 GB | test scoring 141s
+8602.2s 173 RUN_DONE pcr_ia3_mla
+8887.2s 174 [ 147.9 min]   GPU1 partial_mla: ['  ep 6 step 720/1096 loss 1.3426 | tau 0.0505 | lr x0.24 | 27.0 min']
+9187.2s 175 [ 152.9 min]   GPU1 partial_mla: ['  ep 7 step 840/1096 loss 1.3801 | tau 0.0506 | lr x0.10 | 31.6 min']
+9487.3s 176 [ 157.9 min]   GPU1 partial_mla: ['  ep 8 step 960/1096 loss 1.2484 | tau 0.0505 | lr x0.03 | 36.3 min']
+9787.3s 177 [ 162.9 min]   GPU1 partial_mla: ['restored best checkpoint (dev MAP 0.3307)']
+10087.3s 178 [ 167.9 min]   GPU1 partial_mla: ['test: 237 queries x 1727 candidates scored in 162s']
+10222.3s 179 [ 170.1 min] GPU1 finished partial_mla rc=0
+10222.3s 180 KD signal written for 827 training queries (4309 candidates) in 240s
+10222.3s 181 
+10222.3s 182 SUMMARY pcr_partial_mla: dev dense F1@7 0.2946 MAP 0.3936 R@50 0.7213 | hybrid F1@7 0.4191 (honest 0.4091, BM25 alone 0.3606) | params 125.9M trainable 38.11M | train 41 min | peak 3.0 GB | test scoring 162s
+10222.3s 183 RUN_DONE pcr_partial_mla
+10222.3s 184 [ 170.1 min] GPU0 started kd_gqa
+10222.3s 185 [ 170.1 min] GPU1 started lorma_encdec_randneg
+10222.3s 186 [ 170.1 min]   GPU0 kd_gqa: []
+10222.3s 187 [ 170.1 min]   GPU1 lorma_encdec_randneg: []
+10522.3s 188 [ 175.1 min]   GPU0 kd_gqa: ['== epoch 1 | step 120 | minutes 4.4468 | map 0.2902 | f1@7 0.2312 | R@7 0.3035 | R@50 0.6332 | best True']
+10522.3s 189 [ 175.1 min]   GPU1 lorma_encdec_randneg: ['== epoch 1 | step 120 | minutes 3.5376 | map 0.2496 | f1@7 0.1868 | R@7 0.2582 | R@50 0.6318 | best True']
+10822.3s 190 [ 180.1 min]   GPU0 kd_gqa: ['  ep 2 step 240/1640 loss 1.5732 (kd 0.4694) | tau 0.0506 | lr x0.87 | 9.5 min']
+10822.3s 191 [ 180.1 min]   GPU1 lorma_encdec_randneg: ['  ep 3 step 280/1096 loss 1.7325 | tau 0.0493 | lr x0.87 | 9.3 min']
+11122.3s 192 [ 185.1 min]   GPU0 kd_gqa: ['  ep 2 step 360/1640 loss 1.4493 (kd 0.4374) | tau 0.0508 | lr x0.70 | 14.6 min']
+11122.3s 193 [ 185.1 min]   GPU1 lorma_encdec_randneg: ['  ep 4 step 420/1096 loss 1.4360 | tau 0.0493 | lr x0.71 | 13.9 min']
+11422.3s 194 [ 190.1 min]   GPU0 kd_gqa: ['  ep 3 step 480/1640 loss 1.2139 (kd 0.3754) | tau 0.0508 | lr x0.51 | 19.7 min']
+11422.3s 195 [ 190.1 min]   GPU1 lorma_encdec_randneg: ['  ep 5 step 580/1096 loss 1.4506 | tau 0.0494 | lr x0.48 | 19.1 min']
+11722.3s 196 [ 195.1 min]   GPU0 kd_gqa: ['  ep 3 step 600/1640 loss 1.3762 (kd 0.4002) | tau 0.0508 | lr x0.32 | 24.8 min']
+11722.3s 197 [ 195.1 min]   GPU1 lorma_encdec_randneg: ['== epoch 6 | step 720 | minutes 23.7265 | map 0.2774 | f1@7 0.2057 | R@7 0.2857 | R@50 0.6441']
+12022.3s 198 [ 200.1 min]   GPU0 kd_gqa: ['  ep 4 step 700/1640 loss 1.3302 (kd 0.4521) | tau 0.0508 | lr x0.17 | 29.1 min']
+12022.3s 199 [ 200.1 min]   GPU1 lorma_encdec_randneg: ['  ep 7 step 860/1096 loss 1.3642 | tau 0.0494 | lr x0.12 | 28.9 min']
+12322.3s 200 [ 205.1 min]   GPU0 kd_gqa: ['  ep 4 step 820/1640 loss 1.3372 (kd 0.4392) | tau 0.0508 | lr x0.05 | 34.2 min']
+12322.3s 201 [ 205.1 min]   GPU1 lorma_encdec_randneg: ['  ep 8 step 1020/1096 loss 1.5373 | tau 0.0494 | lr x0.03 | 34.1 min']
+12622.3s 202 [ 210.1 min]   GPU0 kd_gqa: ['  ep 5 step 940/1640 loss 1.1833 (kd 0.4734) | tau 0.0508 | lr x0.03 | 39.3 min']
+12622.3s 203 [ 210.1 min]   GPU1 lorma_encdec_randneg: ["DEV error analysis (hybrid): {'gold 1-3': {'n': 40, 'f1': 0.2898, 'zero_hit': 0.15}, 'gold 4-7': {'n': 39, 'f1': 0.4628, 'zero_hit': 0.0256}, 'gold 8+': {'n': 39, 'f1': 0.4112, 'zero_hit': 0.0}, 'short queries': {'n': 40, 'f1': 0.3602, 'zero_hit': 0.075}, 'medium queries': {'n': 39, 'f1': 0.4688, 'zero_hit': 0.0513}, 'long queries': {'n': 39, 'f1': 0.3815, 'zero_hit': 0.0513}}"]
+12667.3s 204 [ 210.9 min] GPU1 finished lorma_encdec_randneg rc=0
+12667.3s 205 test: 237 queries x 1727 candidates scored in 99s
+12667.3s 206 
+12667.3s 207 SUMMARY pcr_lorma_encdec_randneg: dev dense F1@7 0.2079 MAP 0.3078 R@50 0.6467 | hybrid F1@7 0.4013 (honest 0.3967, BM25 alone 0.3606) | params 68.8M trainable 1.72M | train 37 min | peak 2.5 GB | test scoring 99s
+12667.3s 208 RUN_DONE pcr_lorma_encdec_randneg
+12787.3s 209 [ 212.9 min] GPU0 finished kd_gqa rc=0
+12787.3s 210 
+12787.3s 211 SUMMARY pcr_kd_gqa: dev dense F1@7 0.2935 MAP 0.3968 R@50 0.6980 | hybrid F1@7 0.4091 (honest 0.4034, BM25 alone 0.3606) | params 75.1M trainable 75.12M | train 40 min | peak 4.8 GB | test scoring 75s
+12787.3s 212 KD: student dev MAP 0.3968 vs best teacher 0.4102 | student 75.1M params
+12787.3s 213 RUN_DONE pcr_kd_gqa
+12787.5s 214 
+12787.5s 215 return codes: {'lorma_encdec': 0, 'qlora_retnet': 0, 'full_gqa': 0, 'prompt_gqa': 0, 'ia3_mla': 0, 'partial_mla': 0, 'lorma_encdec_randneg': 0, 'kd_gqa': 0}
+12811.9s 216 8 runs | dev queries 118 | test queries 237
+12811.9s 217 
+12811.9s 218 run | dense F1@7     MAP    R@50 | hybrid F1@7  honest |  trainable train min peak GB
+12811.9s 219 pcr_full_gqa |     0.3024  0.4102  0.7149 |      0.4091  0.4005 |    125.46M        41     4.8
+12811.9s 220 pcr_ia3_mla |     0.2846  0.4035  0.7322 |      0.4147  0.4061 |      0.25M        41     3.6
+12811.9s 221 pcr_kd_gqa |     0.2935  0.3968  0.6980 |      0.4091  0.4034 |     75.12M        40     4.8
+12811.9s 222 pcr_lorma_encdec |     0.2157  0.2917  0.6559 |      0.4024  0.3949 |      1.72M        33     2.5
+12811.9s 223 pcr_lorma_encdec_randneg |     0.2079  0.3078  0.6467 |      0.4013  0.3967 |      1.72M        37     2.5
+12811.9s 224 pcr_partial_mla |     0.2946  0.3936  0.7213 |      0.4191  0.4091 |     38.11M        41     3.0
+12811.9s 225 pcr_prompt_gqa |     0.2957  0.4078  0.7405 |      0.4069  0.3990 |      0.21M        41     3.5
+12811.9s 226 pcr_qlora_retnet |     0.2846  0.3808  0.7215 |      0.4047  0.3952 |      3.55M        42     4.2
+12811.9s 227 zero-shot Phase-1    gqa (pcr_full_gqa): maxsim: F1@7 0.2446 MAP 0.3453 | mean: F1@7 0.2601 MAP 0.3446
+12811.9s 228 zero-shot Phase-1    mla (pcr_ia3_mla): maxsim: F1@7 0.2401 MAP 0.3371 | mean: F1@7 0.2568 MAP 0.3382
+12811.9s 229 zero-shot Phase-1 encdec (pcr_lorma_encdec): maxsim: F1@7 0.1301 MAP 0.1530 | mean: F1@7 0.1323 MAP 0.1594
+12811.9s 230 zero-shot Phase-1 encdec (pcr_lorma_encdec_randneg): maxsim: F1@7 0.1301 MAP 0.1530 | mean: F1@7 0.1323 MAP 0.1594
+12811.9s 231 zero-shot Phase-1    mla (pcr_partial_mla): maxsim: F1@7 0.2401 MAP 0.3371 | mean: F1@7 0.2568 MAP 0.3382
+12811.9s 232 zero-shot Phase-1    gqa (pcr_prompt_gqa): maxsim: F1@7 0.2435 MAP 0.3501 | mean: F1@7 0.2613 MAP 0.3539
+12811.9s 233 zero-shot Phase-1 retnet (pcr_qlora_retnet): maxsim: F1@7 0.2513 MAP 0.3440 | mean: F1@7 0.2468 MAP 0.3386
+12811.9s 234 +                pcr_partial_mla -> honest dev F1@7 0.4091
+12811.9s 235 +                   pcr_full_gqa -> honest dev F1@7 0.4199
+12811.9s 236 ENSEMBLE_GREEDY ['pcr_partial_mla', 'pcr_full_gqa']
+12811.9s 237 weights (0.7, 2.0, 0.0) | dev f1@7 0.4236 | p@7 0.4613 | r@7 0.3916 | map 0.5986 | mrr 0.8832 | R@7 0.5696 | R@20 0.6844 | R@50 0.7910 | R@100 0.8447 | honest {'tuned': 0.4211090670932393, 'dense_only': 0.31987370820075495, 'bm25_only': 0.36062007648236566}
+12811.9s 238 ENSEMBLE_ALL ['pcr_full_gqa', 'pcr_ia3_mla', 'pcr_kd_gqa', 'pcr_lorma_encdec', 'pcr_partial_mla', 'pcr_prompt_gqa', 'pcr_qlora_retnet']
+12811.9s 239 weights (0.75, 2.0, 0.0) | dev f1@7 0.4136 | p@7 0.4504 | r@7 0.3823 | map 0.5873 | mrr 0.8658 | R@7 0.5561 | R@20 0.6787 | R@50 0.7965 | R@100 0.8443 | honest {'tuned': 0.4056452764904317, 'dense_only': 0.32751843865072744, 'bm25_only': 0.36062007648236566}
+12811.9s 240 ENS_DONE
+12811.9s 241 
+12811.9s 242 
+12811.9s 243 === official evaluate_phase7.py on the dev predictions ===
+12811.9s 244 pcr_full_gqa/dev_prediction.json (118 queries) | Micro-F1@7: 0.4091161757
+12811.9s 245 pcr_full_gqa/dev_prediction_dense.json (118 queries) | Micro-F1@7: 0.3023902168
+12812.2s 246 pcr_ia3_mla/dev_prediction.json (118 queries) | Micro-F1@7: 0.4146748193
+12812.2s 247 pcr_ia3_mla/dev_prediction_dense.json (118 queries) | Micro-F1@7: 0.2846025570
+12812.2s 248 pcr_kd_gqa/dev_prediction.json (118 queries) | Micro-F1@7: 0.4091161757
+12812.4s 249 pcr_kd_gqa/dev_prediction_dense.json (118 queries) | Micro-F1@7: 0.2934963869
+12812.4s 250 pcr_lorma_encdec/dev_prediction.json (118 queries) | Micro-F1@7: 0.4024458032
+12812.4s 251 pcr_lorma_encdec/dev_prediction_dense.json (118 queries) | Micro-F1@7: 0.2156753752
+12812.7s 252 pcr_lorma_encdec_randneg/dev_prediction.json (118 queries) | Micro-F1@7: 0.4013340745
+12812.7s 253 pcr_lorma_encdec_randneg/dev_prediction_dense.json (118 queries) | Micro-F1@7: 0.2078932740
+12812.7s 254 pcr_partial_mla/dev_prediction.json (118 queries) | Micro-F1@7: 0.4191217343
+12813.0s 255 pcr_partial_mla/dev_prediction_dense.json (118 queries) | Micro-F1@7: 0.2946081156
+12813.0s 256 pcr_prompt_gqa/dev_prediction.json (118 queries) | Micro-F1@7: 0.4068927182
+12813.0s 257 pcr_prompt_gqa/dev_prediction_dense.json (118 queries) | Micro-F1@7: 0.2957198444
+12813.2s 258 pcr_qlora_retnet/dev_prediction.json (118 queries) | Micro-F1@7: 0.4046692607
+12813.2s 259 pcr_qlora_retnet/dev_prediction_dense.json (118 queries) | Micro-F1@7: 0.2846025570
+12813.2s 260 dev_prediction_bm25.json (118 queries) | Micro-F1@7: 0.4002223457
+12813.4s 261 dev_prediction_ensemble_all.json (118 queries) | Micro-F1@7: 0.4135630906
+12813.4s 262 dev_prediction_ensemble_greedy.json (118 queries) | Micro-F1@7: 0.4235686492
+12813.4s 263 ['baseline_bm25_lexical.zip', 'ensemble_all.zip', 'ensemble_greedy.zip', 'pcr_full_gqa_dense.zip', 'pcr_full_gqa_hybrid.zip', 'pcr_ia3_mla_dense.zip', 'pcr_ia3_mla_hybrid.zip', 'pcr_kd_gqa_dense.zip', 'pcr_kd_gqa_hybrid.zip', 'pcr_lorma_encdec_dense.zip', 'pcr_lorma_encdec_hybrid.zip', 'pcr_lorma_encdec_randneg_dense.zip', 'pcr_lorma_encdec_randneg_hybrid.zip', 'pcr_partial_mla_dense.zip', 'pcr_partial_mla_hybrid.zip', 'pcr_prompt_gqa_dense.zip', 'pcr_prompt_gqa_hybrid.zip', 'pcr_qlora_retnet_dense.zip', 'pcr_qlora_retnet_hybrid.zip']
+12813.4s 264 
+12813.4s 265 === SUMMARIES ===
+12813.4s 266 full_gqa | Phase-1 gqa: 125.3M params, kind decoder, positions 2048
+12813.4s 267 full_gqa | model 125.5M params | trainable 125.463M
+12813.4s 268 full_gqa | ZERO-SHOT Phase-1 gqa (mean-pooled states, maxsim, 4 chunks): f1@7 0.2446 | p@7 0.2663 | r@7 0.2261 | map 0.3453 | mrr 0.6116 | R@7 0.3672 | R@20 0.5558 | R@50 0.6926 | R@100 0.7785 | 46s
+12813.4s 269 full_gqa | ZERO-SHOT Phase-1 gqa (mean-pooled states, mean, 4 chunks): f1@7 0.2601 | p@7 0.2833 | r@7 0.2405 | map 0.3446 | mrr 0.5858 | R@7 0.3501 | R@20 0.5707 | R@50 0.6830 | R@100 0.7645 | 46s
+12813.4s 270 full_gqa | restored best checkpoint (dev MAP 0.3636)
+12813.4s 271 full_gqa | DEV dense (maxsim, 8 chunks): f1@7 0.3024 | p@7 0.3293 | r@7 0.2795 | map 0.4102 | mrr 0.6489 | R@7 0.4329 | R@20 0.5959 | R@50 0.7149 | R@100 0.7884
+12813.4s 272 full_gqa | DEV dense (mean, 8 chunks): f1@7 0.2924 | p@7 0.3184 | r@7 0.2703 | map 0.3893 | mrr 0.6388 | R@7 0.3969 | R@20 0.5813 | R@50 0.7183 | R@100 0.8042
+12813.4s 273 full_gqa | similarity used: maxsim (best dev MAP) | dev encoding + scoring 85s
+12813.4s 274 full_gqa | DEV hybrid (w_dense, year_pen, pop) = (0.7, 1.0, 0.0): f1@7 0.4091 | p@7 0.4455 | r@7 0.3782 | map 0.5857 | mrr 0.8697 | R@7 0.5557 | R@20 0.7037 | R@50 0.7848 | R@100 0.8354
+12813.4s 275 full_gqa | honest dev F1@7 (weights fitted on one half, scored on the other): hybrid 0.4005 | dense only 0.3032 | BM25 only 0.3606
+12813.4s 276 full_gqa | DEV error analysis (hybrid): {'gold 1-3': {'n': 40, 'f1': 0.2955, 'zero_hit': 0.15}, 'gold 4-7': {'n': 39, 'f1': 0.4793, 'zero_hit': 0.0256}, 'gold 8+': {'n': 39, 'f1': 0.4154, 'zero_hit': 0.0}, 'short queries': {'n': 40, 'f1': 0.3602, 'zero_hit': 0.075}, 'medium queries': {'n': 39, 'f1': 0.5, 'zero_hit': 0.0513}, 'long queries': {'n': 39, 'f1': 0.3792, 'zero_hit': 0.0513}}
+12813.4s 277 full_gqa | test: 237 queries x 1727 candidates scored in 146s
+12813.4s 278 full_gqa | KD signal written for 827 training queries (4309 candidates) in 215s
+12813.4s 279 full_gqa | SUMMARY pcr_full_gqa: dev dense F1@7 0.3024 MAP 0.4102 R@50 0.7149 | hybrid F1@7 0.4091 (honest 0.4005, BM25 alone 0.3606) | params 125.5M trainable 125.46M | train 41 min | peak 4.8 GB | test scoring 146s
+12813.4s 280 ia3_mla | Phase-1 mla: 125.7M params, kind decoder, positions 2048
+12813.4s 281 ia3_mla | [ia3] scaling vectors on 16 key/value projections and 16 FFN down-projection inputs
+12813.4s 282 ia3_mla | [ia3] applied (32 modules) {'lr': 0.003}
+12813.4s 283 ia3_mla | model 125.9M params | trainable 0.253M
+12813.4s 284 ia3_mla | ZERO-SHOT Phase-1 mla (mean-pooled states, maxsim, 4 chunks): f1@7 0.2401 | p@7 0.2615 | r@7 0.2220 | map 0.3371 | mrr 0.6103 | R@7 0.3566 | R@20 0.5396 | R@50 0.6898 | R@100 0.7732 | 44s
+12813.4s 285 ia3_mla | ZERO-SHOT Phase-1 mla (mean-pooled states, mean, 4 chunks): f1@7 0.2568 | p@7 0.2797 | r@7 0.2374 | map 0.3382 | mrr 0.5770 | R@7 0.3562 | R@20 0.5584 | R@50 0.6820 | R@100 0.7606 | 44s
+12813.4s 286 ia3_mla | restored best checkpoint (dev MAP 0.3460)
+12813.4s 287 ia3_mla | DEV dense (maxsim, 8 chunks): f1@7 0.2879 | p@7 0.3136 | r@7 0.2662 | map 0.4009 | mrr 0.6472 | R@7 0.4059 | R@20 0.5979 | R@50 0.7262 | R@100 0.7959
+12813.4s 288 ia3_mla | DEV dense (mean, 8 chunks): f1@7 0.2846 | p@7 0.3099 | r@7 0.2631 | map 0.4035 | mrr 0.6568 | R@7 0.4036 | R@20 0.5869 | R@50 0.7322 | R@100 0.7993
+12813.4s 289 ia3_mla | similarity used: mean (best dev MAP) | dev encoding + scoring 83s
+12813.4s 290 ia3_mla | DEV hybrid (w_dense, year_pen, pop) = (0.75, 2.0, 0.0): f1@7 0.4147 | p@7 0.4516 | r@7 0.3834 | map 0.5814 | mrr 0.8693 | R@7 0.5567 | R@20 0.6751 | R@50 0.7785 | R@100 0.8457
+12813.4s 291 ia3_mla | honest dev F1@7 (weights fitted on one half, scored on the other): hybrid 0.4061 | dense only 0.2851 | BM25 only 0.3606
+12813.4s 292 ia3_mla | DEV error analysis (hybrid): {'gold 1-3': {'n': 40, 'f1': 0.2955, 'zero_hit': 0.175}, 'gold 4-7': {'n': 39, 'f1': 0.4835, 'zero_hit': 0.0256}, 'gold 8+': {'n': 39, 'f1': 0.4237, 'zero_hit': 0.0}, 'short queries': {'n': 40, 'f1': 0.3649, 'zero_hit': 0.1}, 'medium queries': {'n': 39, 'f1': 0.5078, 'zero_hit': 0.0513}, 'long queries': {'n': 39, 'f1': 0.3838, 'zero_hit': 0.0513}}
+12813.4s 293 ia3_mla | test: 237 queries x 1727 candidates scored in 141s
+12813.4s 294 ia3_mla | KD signal written for 827 training queries (4309 candidates) in 210s
+12813.4s 295 ia3_mla | SUMMARY pcr_ia3_mla: dev dense F1@7 0.2846 MAP 0.4035 R@50 0.7322 | hybrid F1@7 0.4147 (honest 0.4061, BM25 alone 0.3606) | params 125.9M trainable 0.25M | train 41 min | peak 3.6 GB | test scoring 141s
+12813.4s 296 kd_gqa | Phase-1 gqa: 125.3M params, kind decoder, positions 2048
+12813.4s 297 kd_gqa | teacher = mean per-query z-scored similarities of [{'run': 'pcr_full_gqa', 'dev_map': 0.4101723868118985}, {'run': 'pcr_prompt_gqa', 'dev_map': 0.4077838206566939}, {'run': 'pcr_ia3_mla', 'dev_map': 0.4034644771248685}] | queries covered 827
+12813.4s 298 kd_gqa | model 75.1M params | trainable 75.119M
+12813.4s 299 kd_gqa | restored best checkpoint (dev MAP 0.3573)
+12813.4s 300 kd_gqa | DEV dense (maxsim, 8 chunks): f1@7 0.2935 | p@7 0.3196 | r@7 0.2713 | map 0.3968 | mrr 0.6447 | R@7 0.4047 | R@20 0.5910 | R@50 0.6980 | R@100 0.7855
+12813.4s 301 kd_gqa | DEV dense (mean, 8 chunks): f1@7 0.2879 | p@7 0.3136 | r@7 0.2662 | map 0.3852 | mrr 0.6548 | R@7 0.4046 | R@20 0.5973 | R@50 0.7087 | R@100 0.7944
+12813.4s 302 kd_gqa | similarity used: maxsim (best dev MAP) | dev encoding + scoring 43s
+12813.4s 303 kd_gqa | DEV hybrid (w_dense, year_pen, pop) = (0.7, 1.0, 0.0): f1@7 0.4091 | p@7 0.4455 | r@7 0.3782 | map 0.5846 | mrr 0.8746 | R@7 0.5520 | R@20 0.7045 | R@50 0.7827 | R@100 0.8350
+12813.4s 304 kd_gqa | honest dev F1@7 (weights fitted on one half, scored on the other): hybrid 0.4034 | dense only 0.2943 | BM25 only 0.3606
+12813.4s 305 kd_gqa | DEV error analysis (hybrid): {'gold 1-3': {'n': 40, 'f1': 0.2955, 'zero_hit': 0.175}, 'gold 4-7': {'n': 39, 'f1': 0.4835, 'zero_hit': 0.0256}, 'gold 8+': {'n': 39, 'f1': 0.4133, 'zero_hit': 0.0}, 'short queries': {'n': 40, 'f1': 0.3555, 'zero_hit': 0.1}, 'medium queries': {'n': 39, 'f1': 0.5039, 'zero_hit': 0.0513}, 'long queries': {'n': 39, 'f1': 0.3792, 'zero_hit': 0.0513}}
+12813.4s 306 kd_gqa | test: 237 queries x 1727 candidates scored in 75s
+12813.4s 307 kd_gqa | SUMMARY pcr_kd_gqa: dev dense F1@7 0.2935 MAP 0.3968 R@50 0.6980 | hybrid F1@7 0.4091 (honest 0.4034, BM25 alone 0.3606) | params 75.1M trainable 75.12M | train 40 min | peak 4.8 GB | test scoring 75s
+12813.4s 308 kd_gqa | KD: student dev MAP 0.3968 vs best teacher 0.4102 | student 75.1M params
+12813.4s 309 lorma_encdec | Phase-1 encdec: 123.7M params, kind encdec, positions 1024
+12813.4s 310 lorma_encdec | model 68.8M params | trainable 1.722M
+12813.4s 311 lorma_encdec | ZERO-SHOT Phase-1 encdec (mean-pooled states, maxsim, 4 chunks): f1@7 0.1301 | p@7 0.1416 | r@7 0.1202 | map 0.1530 | mrr 0.3543 | R@7 0.1824 | R@20 0.3299 | R@50 0.4672 | R@100 0.6192 | 26s
+12813.4s 312 lorma_encdec | ZERO-SHOT Phase-1 encdec (mean-pooled states, mean, 4 chunks): f1@7 0.1323 | p@7 0.1441 | r@7 0.1223 | map 0.1594 | mrr 0.3683 | R@7 0.1632 | R@20 0.3034 | R@50 0.4793 | R@100 0.6215 | 26s
+12813.4s 313 lorma_encdec | restored best checkpoint (dev MAP 0.2729)
+12813.4s 314 lorma_encdec | DEV dense (maxsim, 8 chunks): f1@7 0.2157 | p@7 0.2349 | r@7 0.1994 | map 0.2917 | mrr 0.5051 | R@7 0.2921 | R@20 0.4639 | R@50 0.6559 | R@100 0.7335
+12813.4s 315 lorma_encdec | DEV dense (mean, 8 chunks): f1@7 0.2101 | p@7 0.2288 | r@7 0.1942 | map 0.2891 | mrr 0.4953 | R@7 0.2913 | R@20 0.4664 | R@50 0.6297 | R@100 0.7296
+12813.4s 316 lorma_encdec | similarity used: maxsim (best dev MAP) | dev encoding + scoring 48s
+12813.4s 317 lorma_encdec | DEV hybrid (w_dense, year_pen, pop) = (0.4, 4.0, 0.0): f1@7 0.4024 | p@7 0.4383 | r@7 0.3720 | map 0.5569 | mrr 0.8568 | R@7 0.5432 | R@20 0.6714 | R@50 0.7490 | R@100 0.8117
+12813.4s 318 lorma_encdec | honest dev F1@7 (weights fitted on one half, scored on the other): hybrid 0.3949 | dense only 0.2161 | BM25 only 0.3606
+12813.4s 319 lorma_encdec | DEV error analysis (hybrid): {'gold 1-3': {'n': 40, 'f1': 0.2898, 'zero_hit': 0.15}, 'gold 4-7': {'n': 39, 'f1': 0.4545, 'zero_hit': 0.0256}, 'gold 8+': {'n': 39, 'f1': 0.4174, 'zero_hit': 0.0}, 'short queries': {'n': 40, 'f1': 0.3602, 'zero_hit': 0.075}, 'medium queries': {'n': 39, 'f1': 0.4609, 'zero_hit': 0.0513}, 'long queries': {'n': 39, 'f1': 0.3884, 'zero_hit': 0.0513}}
+12813.4s 320 lorma_encdec | test: 237 queries x 1727 candidates scored in 82s
+12813.4s 321 lorma_encdec | KD signal written for 827 training queries (4309 candidates) in 122s
+12813.4s 322 lorma_encdec | SUMMARY pcr_lorma_encdec: dev dense F1@7 0.2157 MAP 0.2917 R@50 0.6559 | hybrid F1@7 0.4024 (honest 0.3949, BM25 alone 0.3606) | params 68.8M trainable 1.72M | train 33 min | peak 2.5 GB | test scoring 82s
+12813.4s 323 lorma_encdec_randneg | Phase-1 encdec: 123.7M params, kind encdec, positions 1024
+12813.4s 324 lorma_encdec_randneg | model 68.8M params | trainable 1.722M
+12813.4s 325 lorma_encdec_randneg | ZERO-SHOT Phase-1 encdec (mean-pooled states, maxsim, 4 chunks): f1@7 0.1301 | p@7 0.1416 | r@7 0.1202 | map 0.1530 | mrr 0.3543 | R@7 0.1824 | R@20 0.3299 | R@50 0.4672 | R@100 0.6192 | 32s
+12813.4s 326 lorma_encdec_randneg | ZERO-SHOT Phase-1 encdec (mean-pooled states, mean, 4 chunks): f1@7 0.1323 | p@7 0.1441 | r@7 0.1223 | map 0.1594 | mrr 0.3683 | R@7 0.1632 | R@20 0.3034 | R@50 0.4793 | R@100 0.6215 | 32s
+12813.4s 327 lorma_encdec_randneg | restored best checkpoint (dev MAP 0.2793)
+12813.4s 328 lorma_encdec_randneg | DEV dense (maxsim, 8 chunks): f1@7 0.2079 | p@7 0.2264 | r@7 0.1922 | map 0.3078 | mrr 0.5163 | R@7 0.3166 | R@20 0.4867 | R@50 0.6467 | R@100 0.7328
+12813.4s 329 lorma_encdec_randneg | DEV dense (mean, 8 chunks): f1@7 0.2057 | p@7 0.2240 | r@7 0.1901 | map 0.3019 | mrr 0.5148 | R@7 0.2970 | R@20 0.5027 | R@50 0.6333 | R@100 0.7615
+12813.4s 330 lorma_encdec_randneg | similarity used: maxsim (best dev MAP) | dev encoding + scoring 58s
+12813.4s 331 lorma_encdec_randneg | DEV hybrid (w_dense, year_pen, pop) = (0.25, 2.0, 0.0): f1@7 0.4013 | p@7 0.4370 | r@7 0.3710 | map 0.5645 | mrr 0.8574 | R@7 0.5436 | R@20 0.6789 | R@50 0.7604 | R@100 0.8126
+12813.4s 332 lorma_encdec_randneg | honest dev F1@7 (weights fitted on one half, scored on the other): hybrid 0.3967 | dense only 0.2084 | BM25 only 0.3606
+12813.4s 333 lorma_encdec_randneg | DEV error analysis (hybrid): {'gold 1-3': {'n': 40, 'f1': 0.2898, 'zero_hit': 0.15}, 'gold 4-7': {'n': 39, 'f1': 0.4628, 'zero_hit': 0.0256}, 'gold 8+': {'n': 39, 'f1': 0.4112, 'zero_hit': 0.0}, 'short queries': {'n': 40, 'f1': 0.3602, 'zero_hit': 0.075}, 'medium queries': {'n': 39, 'f1': 0.4688, 'zero_hit': 0.0513}, 'long queries': {'n': 39, 'f1': 0.3815, 'zero_hit': 0.0513}}
+12813.4s 334 lorma_encdec_randneg | test: 237 queries x 1727 candidates scored in 99s
+12813.4s 335 lorma_encdec_randneg | SUMMARY pcr_lorma_encdec_randneg: dev dense F1@7 0.2079 MAP 0.3078 R@50 0.6467 | hybrid F1@7 0.4013 (honest 0.3967, BM25 alone 0.3606) | params 68.8M trainable 1.72M | train 37 min | peak 2.5 GB | test scoring 99s
+12813.4s 336 partial_mla | Phase-1 mla: 125.7M params, kind decoder, positions 2048
+12813.4s 337 partial_mla | model 125.9M params | trainable 38.106M
+12813.4s 338 partial_mla | ZERO-SHOT Phase-1 mla (mean-pooled states, maxsim, 4 chunks): f1@7 0.2401 | p@7 0.2615 | r@7 0.2220 | map 0.3371 | mrr 0.6103 | R@7 0.3566 | R@20 0.5396 | R@50 0.6898 | R@100 0.7732 | 50s
+12813.4s 339 partial_mla | ZERO-SHOT Phase-1 mla (mean-pooled states, mean, 4 chunks): f1@7 0.2568 | p@7 0.2797 | r@7 0.2374 | map 0.3382 | mrr 0.5770 | R@7 0.3562 | R@20 0.5584 | R@50 0.6820 | R@100 0.7606 | 50s
+12813.4s 340 partial_mla | restored best checkpoint (dev MAP 0.3307)
+12813.4s 341 partial_mla | DEV dense (maxsim, 8 chunks): f1@7 0.2968 | p@7 0.3232 | r@7 0.2744 | map 0.3768 | mrr 0.6398 | R@7 0.3927 | R@20 0.6057 | R@50 0.7201 | R@100 0.8064
+12813.4s 342 partial_mla | DEV dense (mean, 8 chunks): f1@7 0.2946 | p@7 0.3208 | r@7 0.2724 | map 0.3936 | mrr 0.6675 | R@7 0.3970 | R@20 0.5979 | R@50 0.7213 | R@100 0.7966
+12813.4s 343 partial_mla | similarity used: mean (best dev MAP) | dev encoding + scoring 94s
+12813.4s 344 partial_mla | DEV hybrid (w_dense, year_pen, pop) = (0.7, 2.0, 0.0): f1@7 0.4191 | p@7 0.4564 | r@7 0.3875 | map 0.5938 | mrr 0.8844 | R@7 0.5588 | R@20 0.6850 | R@50 0.7893 | R@100 0.8460
+12813.4s 345 partial_mla | honest dev F1@7 (weights fitted on one half, scored on the other): hybrid 0.4091 | dense only 0.2952 | BM25 only 0.3606
+12813.4s 346 partial_mla | DEV error analysis (hybrid): {'gold 1-3': {'n': 40, 'f1': 0.2898, 'zero_hit': 0.175}, 'gold 4-7': {'n': 39, 'f1': 0.4959, 'zero_hit': 0.0256}, 'gold 8+': {'n': 39, 'f1': 0.4278, 'zero_hit': 0.0}, 'short queries': {'n': 40, 'f1': 0.3934, 'zero_hit': 0.1}, 'medium queries': {'n': 39, 'f1': 0.5, 'zero_hit': 0.0513}, 'long queries': {'n': 39, 'f1': 0.3838, 'zero_hit': 0.0513}}
+12813.4s 347 partial_mla | test: 237 queries x 1727 candidates scored in 162s
+12813.4s 348 partial_mla | KD signal written for 827 training queries (4309 candidates) in 240s
+12813.4s 349 partial_mla | SUMMARY pcr_partial_mla: dev dense F1@7 0.2946 MAP 0.3936 R@50 0.7213 | hybrid F1@7 0.4191 (honest 0.4091, BM25 alone 0.3606) | params 125.9M trainable 38.11M | train 41 min | peak 3.0 GB | test scoring 162s
+12813.4s 350 prompt_gqa | Phase-1 gqa: 125.3M params, kind decoder, positions 2048
+12813.4s 351 prompt_gqa | model 125.5M params | trainable 0.214M
+12813.4s 352 prompt_gqa | ZERO-SHOT Phase-1 gqa (mean-pooled states, maxsim, 4 chunks): f1@7 0.2435 | p@7 0.2651 | r@7 0.2251 | map 0.3501 | mrr 0.6249 | R@7 0.3705 | R@20 0.5488 | R@50 0.6906 | R@100 0.7706 | 57s
+12813.4s 353 prompt_gqa | ZERO-SHOT Phase-1 gqa (mean-pooled states, mean, 4 chunks): f1@7 0.2613 | p@7 0.2845 | r@7 0.2415 | map 0.3539 | mrr 0.6144 | R@7 0.3700 | R@20 0.5665 | R@50 0.6860 | R@100 0.7592 | 57s
+12813.4s 354 prompt_gqa | restored best checkpoint (dev MAP 0.3464)
+12813.4s 355 prompt_gqa | DEV dense (maxsim, 8 chunks): f1@7 0.2957 | p@7 0.3220 | r@7 0.2734 | map 0.4078 | mrr 0.6576 | R@7 0.4213 | R@20 0.5946 | R@50 0.7405 | R@100 0.8088
+12813.4s 356 prompt_gqa | DEV dense (mean, 8 chunks): f1@7 0.2946 | p@7 0.3208 | r@7 0.2724 | map 0.3964 | mrr 0.6210 | R@7 0.4078 | R@20 0.5921 | R@50 0.7325 | R@100 0.8087
+12813.4s 357 prompt_gqa | similarity used: maxsim (best dev MAP) | dev encoding + scoring 108s
+12813.4s 358 prompt_gqa | DEV hybrid (w_dense, year_pen, pop) = (0.75, 1.0, 0.0): f1@7 0.4069 | p@7 0.4431 | r@7 0.3762 | map 0.5890 | mrr 0.8789 | R@7 0.5597 | R@20 0.6974 | R@50 0.7923 | R@100 0.8451
+12813.4s 359 prompt_gqa | honest dev F1@7 (weights fitted on one half, scored on the other): hybrid 0.3990 | dense only 0.2963 | BM25 only 0.3606
+12813.4s 360 prompt_gqa | DEV error analysis (hybrid): {'gold 1-3': {'n': 40, 'f1': 0.3011, 'zero_hit': 0.15}, 'gold 4-7': {'n': 39, 'f1': 0.4835, 'zero_hit': 0.0256}, 'gold 8+': {'n': 39, 'f1': 0.4071, 'zero_hit': 0.0}, 'short queries': {'n': 40, 'f1': 0.3602, 'zero_hit': 0.075}, 'medium queries': {'n': 39, 'f1': 0.5, 'zero_hit': 0.0513}, 'long queries': {'n': 39, 'f1': 0.3746, 'zero_hit': 0.0513}}
+12813.4s 361 prompt_gqa | test: 237 queries x 1727 candidates scored in 185s
+12813.4s 362 prompt_gqa | KD signal written for 827 training queries (4309 candidates) in 272s
+12813.4s 363 prompt_gqa | SUMMARY pcr_prompt_gqa: dev dense F1@7 0.2957 MAP 0.4078 R@50 0.7405 | hybrid F1@7 0.4069 (honest 0.3990, BM25 alone 0.3606) | params 125.5M trainable 0.21M | train 41 min | peak 3.5 GB | test scoring 185s
+12813.4s 364 qlora_retnet | Phase-1 retnet: 124.3M params, kind decoder, positions 2048
+12813.4s 365 qlora_retnet | [qlora] 104 linears in NF4: 56.1 MB (fp32 backbone 497.1 MB) | mean relative weight error 0.0920
+12813.4s 366 qlora_retnet | [qlora] applied (104 modules) {'lr': 0.0003, 'r': 16, 'alpha': 32, 'block': 64}
+12813.4s 367 qlora_retnet | model 28.1M params | trainable 3.553M
+12813.4s 368 qlora_retnet | ZERO-SHOT Phase-1 retnet (mean-pooled states, maxsim, 4 chunks): f1@7 0.2513 | p@7 0.2736 | r@7 0.2323 | map 0.3440 | mrr 0.6098 | R@7 0.3714 | R@20 0.5216 | R@50 0.6765 | R@100 0.7695 | 91s
+12813.4s 369 qlora_retnet | ZERO-SHOT Phase-1 retnet (mean-pooled states, mean, 4 chunks): f1@7 0.2468 | p@7 0.2688 | r@7 0.2282 | map 0.3386 | mrr 0.5930 | R@7 0.3376 | R@20 0.5530 | R@50 0.6868 | R@100 0.7621 | 91s
+12813.4s 370 qlora_retnet | restored best checkpoint (dev MAP 0.3340)
+12813.4s 371 qlora_retnet | DEV dense (maxsim, 8 chunks): f1@7 0.2790 | p@7 0.3039 | r@7 0.2580 | map 0.3659 | mrr 0.6065 | R@7 0.4081 | R@20 0.5826 | R@50 0.7059 | R@100 0.7953
+12813.4s 372 qlora_retnet | DEV dense (mean, 8 chunks): f1@7 0.2846 | p@7 0.3099 | r@7 0.2631 | map 0.3808 | mrr 0.6137 | R@7 0.3949 | R@20 0.5775 | R@50 0.7215 | R@100 0.7801
+12813.4s 373 qlora_retnet | similarity used: mean (best dev MAP) | dev encoding + scoring 197s
+12813.4s 374 qlora_retnet | DEV hybrid (w_dense, year_pen, pop) = (0.35, 2.0, 0.0): f1@7 0.4047 | p@7 0.4407 | r@7 0.3741 | map 0.5763 | mrr 0.8689 | R@7 0.5466 | R@20 0.6940 | R@50 0.7768 | R@100 0.8287
+12813.4s 375 qlora_retnet | honest dev F1@7 (weights fitted on one half, scored on the other): hybrid 0.3952 | dense only 0.2849 | BM25 only 0.3606
+12813.4s 376 qlora_retnet | DEV error analysis (hybrid): {'gold 1-3': {'n': 40, 'f1': 0.2898, 'zero_hit': 0.15}, 'gold 4-7': {'n': 39, 'f1': 0.4628, 'zero_hit': 0.0256}, 'gold 8+': {'n': 39, 'f1': 0.4174, 'zero_hit': 0.0}, 'short queries': {'n': 40, 'f1': 0.3555, 'zero_hit': 0.075}, 'medium queries': {'n': 39, 'f1': 0.4727, 'zero_hit': 0.0513}, 'long queries': {'n': 39, 'f1': 0.3884, 'zero_hit': 0.0513}}
+12813.4s 377 qlora_retnet | test: 237 queries x 1727 candidates scored in 334s
+12813.4s 378 qlora_retnet | KD signal written for 827 training queries (4309 candidates) in 496s
+12813.4s 379 qlora_retnet | SUMMARY pcr_qlora_retnet: dev dense F1@7 0.2846 MAP 0.3808 R@50 0.7215 | hybrid F1@7 0.4047 (honest 0.3952, BM25 alone 0.3606) | params 28.1M trainable 3.55M | train 42 min | peak 4.2 GB | test scoring 334s
+12813.4s 380 ALL_DONE in 213 min
+12816.8s 381 /usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+12816.8s 382 cells[i][c] = re.sub('\\\\\|', '|', cell)
+12816.9s 383 /usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+12816.9s 384 text = re.sub(r'_', '\_', text) # Escape underscores in display text
+12817.7s 385 [NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+12817.8s 386 [NbConvertApp] Writing 160638 bytes to __notebook__.ipynb
+12820.5s 387 [NbConvertApp] Converting notebook __notebook__.ipynb to html
+12821.4s 388 [NbConvertApp] Writing 865760 bytes to __results__.html

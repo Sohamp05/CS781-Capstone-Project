@@ -1,0 +1,31 @@
+# Model weights and checkpoints (too large for GitHub; reproduce with the Phase-1 notebooks)
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+export_*/
+cs781_phase1_*/
+checkpoints/
+
+# Dataset and tokenised data
+data/
+*.npy
+cs781_phase1_data/
+
+# Large prediction files and submission zips
+submission*.zip
+prediction*.json
+probs_*.json
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Secrets
+.env
+kaggle.json
+
+# OS
+.DS_Store
